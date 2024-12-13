@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perda por Reflexão em Multicamadas</title>
+    <style>
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-bottom: 2px solid #000;
+        }
+
+        .header img {
+            height: 80px; /* Ajuste o tamanho da logo conforme necessário */
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 28px;
+            margin: 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Logo do INPE -->
+        <img src="static/logo_inpe.png" alt="Logo do INPE">
+        
+        <!-- Título centralizado -->
+        <h1>Perda por Reflexão em Multicamadas</h1>
+        
+        <!-- Logo da FATEC-Taubaté -->
+        <img src="static/logo_fatec.png" alt="Logo da FATEC-Taubaté">
+    </header>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .image-item {
+            text-align: center; /* Centraliza a imagem e o label */
+        }
+
+        .image-item img {
+            width: 100%; /* Ajusta a largura das imagens */
+            height: auto; /* Mantém a proporção das imagens */
+            border: 2px solid #000; /* Adiciona uma borda preta às imagens */
+        }
+
+        .image-item label {
+            margin-top: 10px;
+            display: block; /* Garante que o label fique embaixo da imagem */
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload de 3 Arquivos CSV para Plotagem de Gráfico</h1>
+    <form action="/plot" method="post" enctype="multipart/form-data">
+        <div class="image-container">
+            <!-- Imagem 1 e seu label -->
+            <div class="image-item">
+                <img src="static/imagem1.png" alt="Imagem 1">
+                <label for="arquivo1">Selecione o primeiro arquivo CSV referente a amostra da placa:</label>
+                <input type="file" id="arquivo1" name="arquivo1" accept=".csv" required>
+            </div>
+
+            <!-- Imagem 2 e seu label -->
+            <div class="image-item">
+                <img src="static/imagem2.png" alt="Imagem 2">
+                <label for="arquivo2">Selecione o segundo arquivo CSV referente a amostra do meio:</label>
+                <input type="file" id="arquivo2" name="arquivo2" accept=".csv" required>
+            </div>
+
+            <!-- Imagem 3 e seu label -->
+            <div class="image-item">
+                <img src="static/imagem3.png" alt="Imagem 3">
+                <label for="arquivo3">Selecione o terceiro arquivo CSV referente a primeira amostra:</label>
+                <input type="file" id="arquivo3" name="arquivo3" accept=".csv" required>
+            </div>
+        </div>
+        
+        <br>
+        <input type="submit" value="Plotar Gráfico">
+    </form>
+
+    {% if resultado %}
+        <p>{{ resultado }}</p>
+    {% endif %}
+</body>
+</html>
